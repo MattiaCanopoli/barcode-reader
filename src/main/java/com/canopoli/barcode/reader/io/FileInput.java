@@ -1,6 +1,10 @@
 package com.canopoli.barcode.reader.io;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -35,6 +39,20 @@ public class FileInput {
 		}
 
 		return inputFile;
+	}
+
+	public static List<String> getBarcodes(File inputFile) throws FileNotFoundException {
+		List<String> barcodes = new ArrayList<>();
+
+		Scanner reader = new Scanner(inputFile);
+
+		while (reader.hasNext()) {
+			String barcode = reader.nextLine().replace(";", "");
+			barcodes.add(barcode);
+		}
+
+		reader.close();
+		return barcodes;
 	}
 
 }

@@ -1,0 +1,3 @@
+green lblMessage.setForeground(new java.awt.Color(0, 222, 0));
+red lblMessage.setForeground(new java.awt.Color(255, 0, 0));
+blue lblMessage.setForeground(new java.awt.Color(0, 0, 204));
