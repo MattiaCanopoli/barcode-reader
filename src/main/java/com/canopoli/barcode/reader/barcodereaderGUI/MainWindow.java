@@ -4,6 +4,10 @@
  */
 package com.canopoli.barcode.reader.barcodereaderGUI;
 
+import java.io.File;
+
+import com.canopoli.barcode.reader.io.FileInput;
+
 /**
  *
  * @author thya
@@ -140,6 +144,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
+    	File inputFile = FileInput.getFile();
+    	
+    	
+    	
+    	
+    	
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
