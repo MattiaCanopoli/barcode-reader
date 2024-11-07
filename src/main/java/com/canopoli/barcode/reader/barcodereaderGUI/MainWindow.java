@@ -32,6 +32,7 @@ public class MainWindow extends javax.swing.JFrame {
         txtBarcode = new javax.swing.JTextField();
         btnTest = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        lblMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Barcode Reader");
@@ -42,14 +43,53 @@ public class MainWindow extends javax.swing.JFrame {
         lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtFilePath.setText("Select a text file...");
+        txtFilePath.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFilePathFocusGained(evt);
+            }
+        });
 
         btnLoad.setText("Load File");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
 
         txtBarcode.setText("Insert barcode");
+        txtBarcode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBarcodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBarcodeFocusLost(evt);
+            }
+        });
+        txtBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBarcodeKeyTyped(evt);
+            }
+        });
 
         btnTest.setText("Test Barcode");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        lblMessage.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        lblMessage.setForeground(new java.awt.Color(0, 222, 0));
+        lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMessage.setText("NOT FOUND!");
+        lblMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,7 +106,8 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(txtFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnLoad))
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,22 +119,52 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLoad))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTest)
-                .addGap(18, 18, 18)
-                .addComponent(btnSave)
-                .addGap(44, 44, 44))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSave)
+                    .addComponent(lblMessage))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLoad, txtFilePath});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLoad, lblMessage, txtFilePath});
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnSave, btnTest, txtBarcode});
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoadActionPerformed
+
+    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTestActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtBarcodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarcodeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarcodeKeyTyped
+
+    private void txtFilePathFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFilePathFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFilePathFocusGained
+
+    private void txtBarcodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBarcodeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarcodeFocusGained
+
+    private void txtBarcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBarcodeFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarcodeFocusLost
 
     /**
      * @param args the command line arguments
@@ -134,6 +205,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnTest;
+    private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtBarcode;
     private javax.swing.JTextField txtFilePath;
