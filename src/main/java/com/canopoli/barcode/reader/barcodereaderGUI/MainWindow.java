@@ -9,7 +9,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.canopoli.barcode.reader.io.BarcodeTest;
 import com.canopoli.barcode.reader.io.FileInput;
+import com.canopoli.barcode.reader.utility.LabelMsgUtils;
 
 /**
  *
@@ -17,8 +19,11 @@ import com.canopoli.barcode.reader.io.FileInput;
  */
 public class MainWindow extends javax.swing.JFrame {
 
-	List<String> barcodes = new ArrayList<>();
-	
+	File inputFile = null;
+	File outputFile = null;
+	List<String> inputBarcodes = new ArrayList<>();
+	List<String> outputBarcodes = new ArrayList<>();
+
 	/**
 	 * Creates new form MainWindow
 	 */
@@ -65,10 +70,6 @@ public class MainWindow extends javax.swing.JFrame {
 		txtBarcode.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				txtBarcodeFocusGained(evt);
-			}
-
-			public void focusLost(java.awt.event.FocusEvent evt) {
-				txtBarcodeFocusLost(evt);
 			}
 		});
 		txtBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -147,34 +148,59 @@ public class MainWindow extends javax.swing.JFrame {
 	private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLoadActionPerformed
 		// TODO add your handling code here:
 		lblMessage.setVisible(false);
-		File inputFile = FileInput.getFile();
+		inputFile = FileInput.getFile();
 
 		if (inputFile == null) {
 
-			lblMessage.setForeground(new java.awt.Color(255, 0, 0));
-			lblMessage.setText("NO FILE!");
-			lblMessage.setVisible(true);
+			LabelMsgUtils.labelFailRed(lblMessage, "NO FILE!");
 		} else {
 			try {
-				barcodes = FileInput.getBarcodes(inputFile);
+				inputBarcodes = FileInput.getBarcodes(inputFile);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			lblMessage.setForeground(new java.awt.Color(0, 0, 204));
-			lblMessage.setVisible(true);
+			LabelMsgUtils.labelStandardBlue(lblMessage, "LOADED");
 			txtFilePath.setText(inputFile.getName());
-			lblMessage.setText("LOADED!");
 		}
 
 	}// GEN-LAST:event_btnLoadActionPerformed
 
 	private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTestActionPerformed
 		// TODO add your handling code here:
+
+		if (inputFile != null) {
+
+			String barcode = txtBarcode.getText();
+			boolean barcodeExist = false;
+			
+			if (barcode != null && !barcode.equals("") && !barcode.isBlank() && !barcode.isEmpty()) {
+				barcodeExist = BarcodeTest.barcodeTest(barcode, inputBarcodes);
+				
+				if (barcodeExist) {
+					LabelMsgUtils.labelSuccessGreen(lblMessage, "OK!");
+					outputBarcodes.add(barcode);
+					txtBarcode.setText("");
+				} else {
+					LabelMsgUtils.labelFailRed(lblMessage, "NOPE!");
+				}
+				
+			} else {
+				LabelMsgUtils.labelFailRed(lblMessage, "NO BARCODE");
+			}
+			
+
+		} else {
+			LabelMsgUtils.labelFailRed(lblMessage, "NO FILE!");
+
+	}
+
 	}// GEN-LAST:event_btnTestActionPerformed
 
 	private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveActionPerformed
-		// TODO add your handling code here:
+		for (int i=0; i< outputBarcodes.size(); i++) {
+			System.out.println(outputBarcodes.get(i));
+		}
 	}// GEN-LAST:event_btnSaveActionPerformed
 
 	private void txtBarcodeKeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtBarcodeKeyTyped
@@ -185,11 +211,6 @@ public class MainWindow extends javax.swing.JFrame {
 		// TODO add your handling code here:
 		txtBarcode.setText("");
 	}// GEN-LAST:event_txtBarcodeFocusGained
-
-	private void txtBarcodeFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txtBarcodeFocusLost
-		// TODO add your handling code here:
-		txtBarcode.setText("Insert barcode");
-		}// GEN-LAST:event_txtBarcodeFocusLost
 
 	/**
 	 * @param args the command line arguments
