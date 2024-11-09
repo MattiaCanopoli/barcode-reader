@@ -50,7 +50,7 @@ public class FileInput {
 			String barcode = reader.nextLine().replace(";", "");
 			barcodes.add(barcode);
 		}
-
+		
 		reader.close();
 		return barcodes;
 	}

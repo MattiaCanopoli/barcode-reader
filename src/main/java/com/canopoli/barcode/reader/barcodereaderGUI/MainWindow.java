@@ -17,7 +17,7 @@ import com.canopoli.barcode.reader.io.FileInput;
  */
 public class MainWindow extends javax.swing.JFrame {
 
-	List<String> barcodes = new ArrayList<>();
+	List<String> barcodes = new ArrayList();
 	
 	/**
 	 * Creates new form MainWindow
@@ -166,6 +166,11 @@ public class MainWindow extends javax.swing.JFrame {
 			txtFilePath.setText(inputFile.getName());
 			lblMessage.setText("LOADED!");
 		}
+		
+		for (int i=10; i<25;i++) {
+			System.out.println(barcodes.get(i));
+		}
+		
 
 	}// GEN-LAST:event_btnLoadActionPerformed
 
