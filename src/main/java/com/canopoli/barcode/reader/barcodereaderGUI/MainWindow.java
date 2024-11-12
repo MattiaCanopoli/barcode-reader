@@ -4,13 +4,16 @@
  */
 package com.canopoli.barcode.reader.barcodereaderGUI;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.canopoli.barcode.reader.io.BarcodeTest;
 import com.canopoli.barcode.reader.io.FileInput;
+import com.canopoli.barcode.reader.io.FileOutput;
 import com.canopoli.barcode.reader.utility.LabelMsgUtils;
 
 /**
@@ -38,6 +41,7 @@ public class MainWindow extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
@@ -58,6 +62,11 @@ public class MainWindow extends javax.swing.JFrame {
 		lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
 		txtFilePath.setText("Select a text file...");
+//        txtFilePath.addFocusListener(new java.awt.event.FocusAdapter() {
+//            public void focusGained(java.awt.event.FocusEvent evt) {
+//                txtFilePathFocusGained(evt);
+//            }
+//        });
 
 		btnLoad.setText("Load File");
 		btnLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -71,10 +80,11 @@ public class MainWindow extends javax.swing.JFrame {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				txtBarcodeFocusGained(evt);
 			}
+
 		});
 		txtBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
-			public void keyTyped(java.awt.event.KeyEvent evt) {
-				txtBarcodeKeyTyped(evt);
+			public void keyPressed(java.awt.event.KeyEvent evt) {
+				txtBarcodeKeyPressed(evt);
 			}
 		});
 
@@ -92,7 +102,6 @@ public class MainWindow extends javax.swing.JFrame {
 			}
 		});
 
-		lblMessage.setVisible(false);
 		lblMessage.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
 		lblMessage.setForeground(new java.awt.Color(0, 0, 204));
 		lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -145,6 +154,14 @@ public class MainWindow extends javax.swing.JFrame {
 		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
+	private void txtBarcodeKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtBarcodeKeyPressed
+		// TODO add your handling code here:
+		if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+			BarcodeTest.barcodeTestAndAdd(inputFile, txtBarcode, lblMessage, inputBarcodes, outputBarcodes);
+		}
+
+	}// GEN-LAST:event_txtBarcodeKeyPressed
+
 	private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLoadActionPerformed
 		// TODO add your handling code here:
 		lblMessage.setVisible(false);
@@ -168,44 +185,20 @@ public class MainWindow extends javax.swing.JFrame {
 
 	private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTestActionPerformed
 		// TODO add your handling code here:
-
-		if (inputFile != null) {
-
-			String barcode = txtBarcode.getText();
-			boolean barcodeExist = false;
-			
-			if (barcode != null && !barcode.equals("") && !barcode.isBlank() && !barcode.isEmpty()) {
-				barcodeExist = BarcodeTest.barcodeTest(barcode, inputBarcodes);
-				
-				if (barcodeExist) {
-					LabelMsgUtils.labelSuccessGreen(lblMessage, "OK!");
-					outputBarcodes.add(barcode);
-					txtBarcode.setText("");
-				} else {
-					LabelMsgUtils.labelFailRed(lblMessage, "NOPE!");
-				}
-				
-			} else {
-				LabelMsgUtils.labelFailRed(lblMessage, "NO BARCODE");
-			}
-			
-
-		} else {
-			LabelMsgUtils.labelFailRed(lblMessage, "NO FILE!");
+		BarcodeTest.barcodeTestAndAdd(inputFile, txtBarcode, lblMessage, inputBarcodes, outputBarcodes);
 
 	}
 
-	}// GEN-LAST:event_btnTestActionPerformed
-
 	private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveActionPerformed
-		for (int i=0; i< outputBarcodes.size(); i++) {
-			System.out.println(outputBarcodes.get(i));
+		try {
+			FileOutput.saveFile(outputBarcodes);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}// GEN-LAST:event_btnSaveActionPerformed
+	}
 
-	private void txtBarcodeKeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtBarcodeKeyTyped
-		// TODO add your handling code here:
-	}// GEN-LAST:event_txtBarcodeKeyTyped
+	// GEN-LAST:event_btnSaveActionPerformed
 
 	private void txtBarcodeFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txtBarcodeFocusGained
 		// TODO add your handling code here:
