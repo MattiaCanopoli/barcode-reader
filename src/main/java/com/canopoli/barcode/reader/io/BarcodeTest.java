@@ -19,33 +19,6 @@ public class BarcodeTest {
 		}
 	}
 
-//	public static void barcodeTestAndAdd (File inputFile, JTextField txtBarcode, JLabel lblMessage, List<String> inputBarcodes, List<String> outputBarcodes) {
-//	 	if (inputFile != null) {
-//
-//			String barcode = txtBarcode.getText();
-//			boolean barcodeExist = false;
-//
-//			if (barcode != null && !barcode.equals("") && !barcode.isBlank() && !barcode.isEmpty()) {
-//				barcodeExist = BarcodeTest.barcodeTest(barcode, inputBarcodes);
-//
-//				if (barcodeExist) {
-//					LabelMsgUtils.labelSuccessGreen(lblMessage, "OK!");
-//					outputBarcodes.add(barcode);
-//					//txtBarcode.setText("");
-//				} else {
-//					LabelMsgUtils.labelFailRed(lblMessage, "NOPE!");
-//				}
-//
-//			} else {
-//				LabelMsgUtils.labelFailRed(lblMessage, "NO BARCODE");
-//			}
-//
-//		} else {
-//			LabelMsgUtils.labelFailRed(lblMessage, "NO FILE!");
-//
-//		}
-//	}
-
 	public static void barcodeTestAndAdd(File inputFile, JTextField txtBarcode, JLabel lblMessage,
 			List<String> inputBarcodes, List<String> outputBarcodes) {
 
