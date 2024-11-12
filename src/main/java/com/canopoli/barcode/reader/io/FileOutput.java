@@ -16,32 +16,27 @@ public class FileOutput {
 		JFileChooser dirChooser = new JFileChooser();
 		//dirChooser .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		dirChooser.setAcceptAllFileFilterUsed(false);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt","Text files");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files",".txt");
 
 		dirChooser.setFileFilter(filter);
 		dirChooser.showSaveDialog(dirChooser);
 
 		File file = dirChooser.getSelectedFile();
-
 		FileWriter fileWriter = new FileWriter(file);
 
-		BufferedWriter writer = new BufferedWriter(fileWriter);
-		for (String barcode : barcodes) {
-			writer.write(barcode + "\n");
-		}
+		FileOutput.writeFile(barcodes, file);
 
-		writer.close();
 		fileWriter.close();
 
 	}
 
 
-//	public static void saveFile (String[] barcodes, String outputFile ) throws IOException {
-//		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-//		for (String barcode : barcodes) {
-//			writer.write(barcode + "\n");
-//		}
-//		writer.close();
-//	}
+	public static void writeFile (List<String> barcodes, File outputFile ) throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+		for (String barcode : barcodes) {
+			writer.write(barcode + "\n");
+		}
+		writer.close();
+	}
 
 }
