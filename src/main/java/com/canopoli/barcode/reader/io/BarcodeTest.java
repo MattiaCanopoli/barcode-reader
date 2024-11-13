@@ -27,9 +27,9 @@ public class BarcodeTest {
 
 		if (inputFile == null) {
 			LabelMsgUtils.labelFailRed(lblMessage, "NESSUN FILE!");
-		} else if (barcode == null || barcode.equals("") || barcode.isBlank() || barcode.isEmpty()) {
+		} else if (barcode == null || barcode.equals("") ||  barcode.isEmpty()) {
 			LabelMsgUtils.labelFailRed(lblMessage, "NESSUN BARCODE");
-		} else if (barcode != null && !barcode.equals("") && !barcode.isBlank() && !barcode.isEmpty()) {
+		} else if (barcode != null && !barcode.equals("") && !barcode.isEmpty()) {
 			barcodeExist = BarcodeTest.barcodeTest(barcode, inputBarcodes);
 			if (barcodeExist) {
 				outputBarcodes.add(barcode);
