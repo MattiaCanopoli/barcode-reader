@@ -9,6 +9,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
-        <exec.mainClass>com.canopoli.barcode.reader.BarcodeReader</exec.mainClass>
+        <exec.mainClass>com.canopoli.barcode.reader.barcodereaderGUI.MainWindow</exec.mainClass>
     </properties>
+    
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
