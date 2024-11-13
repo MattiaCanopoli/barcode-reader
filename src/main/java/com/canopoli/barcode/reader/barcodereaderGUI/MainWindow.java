@@ -20,6 +20,7 @@ import com.canopoli.barcode.reader.utility.LabelMsgUtils;
  *
  * @author thya
  */
+@SuppressWarnings("serial")
 public class MainWindow extends javax.swing.JFrame {
 
 	//custom variable declaration
@@ -178,6 +179,8 @@ public class MainWindow extends javax.swing.JFrame {
 			LabelMsgUtils.labelStandardBlue(lblMessage, "LOADED");
 			txtFilePath.setText(inputFile.getName());
 		}
+		
+		txtBarcode.requestFocusInWindow();
 
 	}// GEN-LAST:event_btnLoadActionPerformed
 
