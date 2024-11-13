@@ -11,27 +11,36 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileOutput {
 
-	public static void saveFile (List<String> barcodes) throws IOException {
+	public static void saveFile(List<String> barcodes) throws IOException {
 
 		JFileChooser dirChooser = new JFileChooser();
-		//dirChooser .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		// dirChooser .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		// dirChooser.setAcceptAllFileFilterUsed(false);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File (.txt)","txt");
+
+		// dirChooser.setFileFilter(filter);
 		dirChooser.setAcceptAllFileFilterUsed(false);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files",".txt");
+		dirChooser.addChoosableFileFilter(filter);
+		int result = dirChooser.showSaveDialog(dirChooser);
+		if (result == JFileChooser.APPROVE_OPTION) {
 
-		dirChooser.setFileFilter(filter);
-		dirChooser.showSaveDialog(dirChooser);
+			File file = dirChooser.getSelectedFile();
+			String filePath = file.getPath();
 
-		File file = dirChooser.getSelectedFile();
-		FileWriter fileWriter = new FileWriter(file);
+			if (!filePath.endsWith(".txt")) {
+				file = new File (filePath + ".txt");
+			}
 
-		FileOutput.writeFile(barcodes, file);
+			FileWriter fileWriter = new FileWriter(file);
 
-		fileWriter.close();
+			FileOutput.writeFile(barcodes, file);
+
+			fileWriter.close();
+		}
 
 	}
 
-
-	public static void writeFile (List<String> barcodes, File outputFile ) throws IOException {
+	public static void writeFile(List<String> barcodes, File outputFile) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 		for (String barcode : barcodes) {
 			writer.write(barcode + "\n");
