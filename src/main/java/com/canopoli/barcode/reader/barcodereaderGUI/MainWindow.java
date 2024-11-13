@@ -44,118 +44,115 @@ public class MainWindow extends javax.swing.JFrame {
 
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
-	// Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-		lblTitle = new javax.swing.JLabel();
-		txtFilePath = new javax.swing.JTextField();
-		btnLoad = new javax.swing.JButton();
-		txtBarcode = new javax.swing.JTextField();
-		btnTest = new javax.swing.JButton();
-		btnSave = new javax.swing.JButton();
-		lblMessage = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        txtFilePath = new javax.swing.JTextField();
+        btnLoad = new javax.swing.JButton();
+        txtBarcode = new javax.swing.JTextField();
+        btnTest = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        lblMessage = new javax.swing.JLabel();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Barcode Reader");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Barcode Reader");
+        setResizable(false);
 
-		lblTitle.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-		lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		lblTitle.setText("Barcode Reader");
-		lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblTitle.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Barcode Reader");
+        lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-		txtFilePath.setText("Select a text file...");
+        txtFilePath.setText("Select a text file...");
 
-		btnLoad.setText("Load File");
-		btnLoad.addActionListener(new java.awt.event.ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnLoadActionPerformed(evt);
-			}
-		});
+        btnLoad.setText("Load File");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
 
-		txtBarcode.setText("Insert barcode");
-		txtBarcode.addFocusListener(new java.awt.event.FocusAdapter() {
-			@Override
-			public void focusGained(java.awt.event.FocusEvent evt) {
-				txtBarcodeFocusGained(evt);
-			}
+        txtBarcode.setText("Insert barcode");
+        txtBarcode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBarcodeFocusGained(evt);
+            }
+        });
+        txtBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBarcodeKeyPressed(evt);
+            }
+        });
 
-		});
-		txtBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
-			@Override
-			public void keyPressed(java.awt.event.KeyEvent evt) {
-				txtBarcodeKeyPressed(evt);
-			}
-		});
+        btnTest.setText("Test Barcode");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
 
-		btnTest.setText("Test Barcode");
-		btnTest.addActionListener(new java.awt.event.ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnTestActionPerformed(evt);
-			}
-		});
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
-		btnSave.setText("Save");
-		btnSave.addActionListener(new java.awt.event.ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnSaveActionPerformed(evt);
-			}
-		});
+        lblMessage.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        lblMessage.setForeground(new java.awt.Color(0, 0, 204));
+        lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMessage.setFocusable(false);
+        lblMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-		lblMessage.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-		lblMessage.setForeground(new java.awt.Color(0, 0, 204));
-		lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		lblMessage.setText("NOT FOUND!");
-		lblMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-		lblMessage.setVisible(false);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(btnTest)
+                        .addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnLoad))
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoad))
+                .addGap(32, 32, 32)
+                .addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnTest)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSave)
+                    .addComponent(lblMessage))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addContainerGap(40, Short.MAX_VALUE)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING).addComponent(btnSave)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-								.addComponent(btnTest)
-								.addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 260,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGroup(layout.createSequentialGroup()
-										.addComponent(txtFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 260,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(btnLoad))
-								.addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 240,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 161,
-										javax.swing.GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap(40, Short.MAX_VALUE)));
-		layout.setVerticalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addContainerGap()
-								.addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(txtFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnLoad))
-								.addGap(32, 32, 32)
-								.addComponent(txtBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(18, 18, 18).addComponent(btnTest).addGap(27, 27, 27)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-										.addComponent(btnSave).addComponent(lblMessage))
-								.addContainerGap(32, Short.MAX_VALUE)));
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLoad, lblMessage, txtFilePath});
 
-		layout.linkSize(javax.swing.SwingConstants.VERTICAL,
-				new java.awt.Component[] { btnLoad, lblMessage, txtFilePath });
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnSave, btnTest, txtBarcode});
 
-		layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] { btnSave, btnTest, txtBarcode });
-
-		pack();
-		setLocationRelativeTo(null);
-	}// </editor-fold>//GEN-END:initComponents
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
 
 	private void txtBarcodeKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtBarcodeKeyPressed
 		if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -247,13 +244,13 @@ public class MainWindow extends javax.swing.JFrame {
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton btnLoad;
-	private javax.swing.JButton btnSave;
-	private javax.swing.JButton btnTest;
-	private javax.swing.JLabel lblMessage;
-	private javax.swing.JLabel lblTitle;
-	private javax.swing.JTextField txtBarcode;
-	private javax.swing.JTextField txtFilePath;
-	// End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnTest;
+    private javax.swing.JLabel lblMessage;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtBarcode;
+    private javax.swing.JTextField txtFilePath;
+    // End of variables declaration//GEN-END:variables
 }
