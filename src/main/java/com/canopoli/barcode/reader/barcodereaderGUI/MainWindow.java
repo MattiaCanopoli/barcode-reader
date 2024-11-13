@@ -190,6 +190,7 @@ public class MainWindow extends javax.swing.JFrame {
 	private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveActionPerformed
 		try {
 			FileOutput.saveFile(outputBarcodes);
+			outputBarcodes.clear();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
