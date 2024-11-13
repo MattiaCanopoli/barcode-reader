@@ -109,6 +109,7 @@ public class MainWindow extends javax.swing.JFrame {
 		lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		lblMessage.setText("NOT FOUND!");
 		lblMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+		lblMessage.setVisible(false);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -169,14 +170,14 @@ public class MainWindow extends javax.swing.JFrame {
 
 		if (inputFile == null) {
 
-			LabelMsgUtils.labelFailRed(lblMessage, "NO FILE!");
+			LabelMsgUtils.labelFailRed(lblMessage, "NESSUN FILE!");
 		} else {
 			try {
 				inputBarcodes = FileInput.getBarcodes(inputFile);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			LabelMsgUtils.labelStandardBlue(lblMessage, "LOADED");
+			LabelMsgUtils.labelStandardBlue(lblMessage, "CARICATO!");
 			txtFilePath.setText(inputFile.getName());
 		}
 		

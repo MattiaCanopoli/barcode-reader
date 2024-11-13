@@ -26,20 +26,19 @@ public class BarcodeTest {
 		boolean barcodeExist = false;
 
 		if (inputFile == null) {
-			LabelMsgUtils.labelFailRed(lblMessage, "NO FILE!");
+			LabelMsgUtils.labelFailRed(lblMessage, "NESSUN FILE!");
 		} else if (barcode == null || barcode.equals("") || barcode.isBlank() || barcode.isEmpty()) {
-			LabelMsgUtils.labelFailRed(lblMessage, "NO BARCODE");
+			LabelMsgUtils.labelFailRed(lblMessage, "NESSUN BARCODE");
 		} else if (barcode != null && !barcode.equals("") && !barcode.isBlank() && !barcode.isEmpty()) {
 			barcodeExist = BarcodeTest.barcodeTest(barcode, inputBarcodes);
 			if (barcodeExist) {
-				LabelMsgUtils.labelSuccessGreen(lblMessage, "OK!");
 				outputBarcodes.add(barcode);
 				txtBarcode.setText("");
+				LabelMsgUtils.labelSuccessGreen(lblMessage, "OK!");
 			} else {
-				LabelMsgUtils.labelFailRed(lblMessage, "NOPE!");
+				LabelMsgUtils.labelFailRed(lblMessage, "NON RICONOSCIUTO!");
 			}
 		}
-
 	}
 
 }
