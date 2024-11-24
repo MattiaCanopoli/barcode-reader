@@ -15,18 +15,18 @@ public class FileInput {
 
 		File inputFile = null;
 		try {
-			String homeDirectory = System.getenv("HOME");
+			//String homeDirectory = System.getenv("HOME");
 
 			JFileChooser fileChooser = new JFileChooser();
 
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text files", "csv", "txt");
 
+			fileChooser.setAcceptAllFileFilterUsed(false);
 			fileChooser.setFileFilter(filter);
-			fileChooser.setCurrentDirectory(new File(homeDirectory));
 
 			int result = fileChooser.showOpenDialog(null);
 
-			System.out.println("result=" + result);
+			//System.out.println("result=" + result);
 
 			if (result == JFileChooser.APPROVE_OPTION) {
 				inputFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
